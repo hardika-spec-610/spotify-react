@@ -1,0 +1,89 @@
+import "./styles.css";
+import { BsSearch } from "react-icons/bs";
+import { Form } from "react-bootstrap";
+
+const BackArrowHeader = (props) => {
+  return (
+    <div className="d-flex align-items-center content-header mx-0">
+      <button className="arrow-bg mr-2" title="back">
+        <svg
+          role="img"
+          height="16"
+          width="16"
+          aria-hidden="true"
+          viewBox="0 0 16 16"
+          data-encore-id="icon"
+          fill="#fff"
+        >
+          <path d="M11.03.47a.75.75 0 010 1.06L4.56 8l6.47 6.47a.75.75 0 11-1.06 1.06L2.44 8 9.97.47a.75.75 0 011.06 0z"></path>
+        </svg>
+      </button>
+      <button id="previous" className="arrow-bg" title="forward">
+        <svg
+          role="img"
+          height="16"
+          width="16"
+          aria-hidden="true"
+          className="Svg-sc-ytk21e-0 kcBZLg IYDlXmBmmUKHveMzIPCF"
+          viewBox="0 0 16 16"
+          data-encore-id="icon"
+          fill="#fff"
+        >
+          <path d="M4.97.47a.75.75 0 000 1.06L11.44 8l-6.47 6.47a.75.75 0 101.06 1.06L13.56 8 6.03.47a.75.75 0 00-1.06 0z"></path>
+        </svg>
+      </button>
+      <Form
+        onSubmit={props.handleSubmit}
+        className="input-group d-flex align-items-center ml-4 py-0"
+      >
+        <BsSearch size={18} />
+        <Form.Control
+          type="search"
+          value={props.query}
+          onChange={props.handleChange}
+          placeholder="Search song..."
+          className="search-input ml-2 text-truncate"
+        />
+      </Form>
+
+      <div className="dropdown d-flex align-items-center ml-auto">
+        <div className="account-circle d-flex align-items-center justify-content-center">
+          <svg
+            role="img"
+            height="16"
+            width="16"
+            aria-hidden="true"
+            viewBox="0 0 16 16"
+            data-encore-id="icon"
+            fill="#fff"
+          >
+            <path d="M6.233.371a4.388 4.388 0 015.002 1.052c.421.459.713.992.904 1.554.143.421.263 1.173.22 1.894-.078 1.322-.638 2.408-1.399 3.316l-.127.152a.75.75 0 00.201 1.13l2.209 1.275a4.75 4.75 0 012.375 4.114V16H.382v-1.143a4.75 4.75 0 012.375-4.113l2.209-1.275a.75.75 0 00.201-1.13l-.126-.152c-.761-.908-1.322-1.994-1.4-3.316-.043-.721.077-1.473.22-1.894a4.346 4.346 0 01.904-1.554c.411-.448.91-.807 1.468-1.052zM8 1.5a2.888 2.888 0 00-2.13.937 2.85 2.85 0 00-.588 1.022c-.077.226-.175.783-.143 1.323.054.921.44 1.712 1.051 2.442l.002.001.127.153a2.25 2.25 0 01-.603 3.39l-2.209 1.275A3.25 3.25 0 001.902 14.5h12.196a3.25 3.25 0 00-1.605-2.457l-2.209-1.275a2.25 2.25 0 01-.603-3.39l.127-.153.002-.001c.612-.73.997-1.52 1.052-2.442.032-.54-.067-1.097-.144-1.323a2.85 2.85 0 00-.588-1.022A2.888 2.888 0 008 1.5z"></path>
+          </svg>
+        </div>
+        <button
+          id="account-pill"
+          className="btn my-0 dropdown-toggle text-white d-flex align-items-center"
+          type="button"
+          data-toggle="dropdown"
+          aria-expanded="false"
+        >
+          Hardika
+        </button>
+
+        <div className="dropdown-menu dropdown-menu-right">
+          <a className="dropdown-item" href="#Action">
+            Action
+          </a>
+          <a className="dropdown-item" href="#Another action">
+            Another action
+          </a>
+          <a className="dropdown-item" href="#logout" id="logout">
+            Logout
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default BackArrowHeader;

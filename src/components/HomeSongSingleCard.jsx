@@ -1,12 +1,21 @@
 import { Col } from "react-bootstrap";
-const HomeSongSingleCard = ({ album }) => {
+import { useDispatch } from "react-redux";
+import { addSongToPlayerSelectedAction } from "../redux/actions";
+const HomeSongSingleCard = (props) => {
+  const dispatch = useDispatch();
   return (
     <Col
-      key={album.id}
+      key={props.id}
       className=" col-12 mb-4 col-sm-4 mb-sm-4 col-md-4 mb-md-4 col-lg-3 mb-lg-4 col-xl-2"
     >
       <div className="album-card w-100">
-        <button title="Play" className="play-green-btn">
+        <button
+          title="Play"
+          className="play-green-btn"
+          onClick={() => {
+            dispatch(addSongToPlayerSelectedAction(props.selectedSong));
+          }}
+        >
           <svg
             role="img"
             height="24"
@@ -21,18 +30,18 @@ const HomeSongSingleCard = ({ album }) => {
         <a href="#page" className="w-100">
           <div className="card">
             <img
-              src={album.album.cover_medium}
+              src={props.cover_medium}
               className="card-img-top mb-3"
-              alt="{album.album.title}"
+              alt={props.alttitle}
               width="100%"
             />
             <div className="card-body p-0">
               <h6 className="card-title text-capitalize text-truncate text-white mb-0">
-                {album.album.title}
+                {props.title}
               </h6>
               <p className="card-text text-truncate mt-1">
                 {" "}
-                {album.title_short}
+                {props.title_short}
               </p>
             </div>
           </div>
