@@ -1,13 +1,13 @@
 import { Col } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { addSongToPlayerSelectedAction } from "../redux/actions";
+import "./styles.css";
+
 const HomeSongSingleCard = (props) => {
   const dispatch = useDispatch();
+
   return (
-    <Col
-      key={props.id}
-      className=" col-12 mb-4 col-sm-4 mb-sm-4 col-md-4 mb-md-4 col-lg-3 mb-lg-4 col-xl-2"
-    >
+    <Col className=" col-12 mb-4 col-sm-4 mb-sm-4 col-md-4 mb-md-4 col-lg-3 mb-lg-4 col-xl-2">
       <div className="album-card w-100">
         <button
           title="Play"
@@ -27,14 +27,33 @@ const HomeSongSingleCard = (props) => {
             <path d="M7.05 3.606l13.49 7.788a.7.7 0 010 1.212L7.05 20.394A.7.7 0 016 19.788V4.212a.7.7 0 011.05-.606z"></path>
           </svg>
         </button>
+
         <a href="#page" className="w-100">
           <div className="card">
-            <img
-              src={props.cover_medium}
-              className="card-img-top mb-3"
-              alt={props.alttitle}
-              width="100%"
-            />
+            <div className="position-relative">
+              {/* {isLike ? ( */}
+              {/* <BsFillHeartFill
+                size={20}
+                fill="#1fdf64"
+                className="heart-fill"
+                // onClick={toggleLike}
+              /> */}
+              {/* ) : ( */}
+              {/* <BsHeart
+                size={20}
+                fill="#1fdf64"
+                className="heart-line"
+                onClick={toggleLike}
+              /> */}
+              {/* )} */}
+
+              <img
+                src={props.cover_medium}
+                className="card-img-top mb-3"
+                alt={props.alttitle}
+                width="100%"
+              />
+            </div>
             <div className="card-body p-0">
               <h6 className="card-title text-capitalize text-truncate text-white mb-0">
                 {props.title}

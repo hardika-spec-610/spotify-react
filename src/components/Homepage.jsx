@@ -4,21 +4,14 @@ import { Container, Row } from "react-bootstrap";
 import ArtistTopCard from "./ArtistTopCard";
 import HomeSongSingleCard from "./HomeSongSingleCard";
 import BackArrowHeader from "./BackArrowHeader";
+import { loadArtist } from "../redux/actions";
+import { useDispatch, useSelector } from "react-redux";
 
 const Homepage = () => {
-  const [songsList, setSongsList] = useState([]);
   const [query, setQuery] = useState("");
+  const dispatch = useDispatch();
+  const songsList = useSelector((state) => state.getSong.fetchSong);
 
-  //   const [popSong, setPopSong] = useState([]);
-  //   const artistArray = ["Arijit Singh", "Avicii", "Metallica", "Eminem", "Akon"];
-  //   const popArtists = [
-  //     "Sonu Nigam",
-  //     "Dhvani Bhanushali",
-  //     "Adnan Sami",
-  //     "Neha Kakkar",
-  //     "katyperry",
-  //   ];
-  const url = "https://striveschool-api.herokuapp.com/api/deezer/search?q=";
   const options = {
     method: "GET",
     headers: {
@@ -27,26 +20,8 @@ const Homepage = () => {
     },
   };
 
-  const loadArtist = async (artistName) => {
-    try {
-      //   for (let i = 0; i > artistArray.length; i++) {
-      let response = await fetch(url + artistName, options);
-      if (response.ok) {
-        const songs = await response.json();
-        const { data } = songs;
-        setSongsList(data);
-        console.log("songs", data);
-      } else {
-        console.log("No songs found");
-      }
-      //   }
-    } catch (e) {
-      console.error(e);
-    }
-  };
-
   useEffect(() => {
-    loadArtist("Arijit Singh");
+    dispatch(loadArtist("Arijit Singh", options));
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -56,7 +31,7 @@ const Homepage = () => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    loadArtist("Arijit Singh");
+    dispatch(loadArtist("Arijit Singh", options));
   };
 
   return (
@@ -78,7 +53,6 @@ const Homepage = () => {
 
                 .map((album) => (
                   <HomeSongSingleCard
-                    id={album.id}
                     key={album.id}
                     selectedSong={album}
                     cover_medium={album.album.cover_medium}
@@ -103,7 +77,6 @@ const Homepage = () => {
             <Row>
               {songsList.slice(0, 18).map((album) => (
                 <HomeSongSingleCard
-                  id={album.id}
                   key={album.id}
                   selectedSong={album}
                   cover_medium={album.album.cover_medium}

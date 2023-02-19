@@ -1,19 +1,21 @@
 import React from "react";
 import "./musicplayer.css";
-import { BsHeart, BsPlayCircleFill } from "react-icons/bs";
+import { BsHeart, BsPlayCircleFill, BsFillHeartFill } from "react-icons/bs";
 import { FaRandom, FaStepBackward, FaStepForward } from "react-icons/fa";
 import { FiRepeat } from "react-icons/fi";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import img from "../../Assets/artist-pick.jfif";
+import { addLikeSong, removeLikedSong } from "../../redux/actions";
 
 const MusicPlayer = () => {
+  const dispatch = useDispatch();
   const selectedSong = useSelector((state) => state.selected.selectedSong);
+  // const favoriteSongs = useSelector((state) => state.like.songs);
+  // console.log("favoriteSongs", favoriteSongs);
+
   return (
     <>
       <div className="music-player-container">
-        <audio id="audio">
-          <source src="" type="audio/mpeg" preload="metadata" />
-        </audio>
         <div className="music-player">
           <div className="song-bar">
             <div className="song-infos">
@@ -26,7 +28,6 @@ const MusicPlayer = () => {
               ) : (
                 <img src={img} width="56" alt="current song" />
               )}
-
               <div className="song-description">
                 {selectedSong ? (
                   <p className="title">{selectedSong.title}</p>
@@ -40,9 +41,36 @@ const MusicPlayer = () => {
                 )}
               </div>
             </div>
-            <div className="icons">
-              <BsHeart />
-            </div>
+
+            {/* {isLiked ? (
+              <BsFillHeartFill
+                size={20}
+                fill="#1fdf64"
+                onClick={dispatch(removeLikedSong(selectedSong))}
+              />
+            ) : ( */}
+            {/* <BsHeart
+              size={20}
+              fill="#1fdf64"
+              onClick={dispatch(addLikeSong(selectedSong.title))}
+            /> */}
+            {/* )} */}
+            {/* <div className="icons">
+              {favoriteSongs.some((song) => selectedSong.id === song.id) ? (
+                <BsFillHeartFill
+                  size={20}
+                  fill="#1fdf64"
+                  onClick={toggleLike}
+                />
+              ) : (
+                <BsHeart
+                  size={20}
+                  fill="#1fdf64"
+                  onClick={toggleLike}
+                />
+              )}
+            </div> */}
+            <BsHeart size={20} fill="#1fdf64" />
           </div>
           <div className="progress-controller">
             <div className="control-buttons">

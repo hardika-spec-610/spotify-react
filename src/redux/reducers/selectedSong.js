@@ -1,14 +1,19 @@
-import { ADD_SONG_TO_SELECTED } from "../actions";
+import { ADD_SONG_TO_SELECTED, GET_SONGS } from "../actions";
 
 const initialState = {
+  songData: [],
   selectedSong: null,
 };
 
 const selectedSongReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ADD_SONG_TO_SELECTED:
+    case GET_SONGS:
       return {
         ...state,
+        songData: action.payload,
+      };
+    case ADD_SONG_TO_SELECTED:
+      return {
         selectedSong: action.payload,
       };
 

@@ -8,7 +8,7 @@ import {
   BsFillBagPlusFill,
 } from "react-icons/bs";
 
-const Sidebar = (props) => {
+const Sidebar = () => {
   return (
     <aside className="sidebar">
       <nav className="navbar d-block">

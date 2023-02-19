@@ -426,7 +426,16 @@ input:focus-visible {
   bottom: 30%;
   opacity: 1;
 }
-
+.heart-line {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+}
+.heart-fill {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+}
 @media screen and (min-width: 768px) {
   .medium-screen-p {
     padding-inline: 32px;
