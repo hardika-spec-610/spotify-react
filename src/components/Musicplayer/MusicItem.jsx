@@ -8,6 +8,7 @@ const MusicItem = () => {
   const selectedSong = useSelector((state) => state.selected.selectedSong);
   console.log("selectedSong", selectedSong);
   const fetchSong = useSelector((state) => state.getSong.fetchSong);
+  console.log("fetchSong", fetchSong);
   const favoriteSongs = useSelector((state) => state.like.songs);
 
   console.log("favoriteSongs", favoriteSongs);
@@ -16,9 +17,9 @@ const MusicItem = () => {
   return (
     <div className="song-bar w-100 mr-4">
       <div className="song-infos">
-        {selectedSong ? (
+        {selectedSong.length !== 0 ? (
           <img
-            src={selectedSong.album.cover_small}
+            src={selectedSong?.album.cover_small}
             alt="current song"
             className="image-container"
           />
@@ -31,17 +32,17 @@ const MusicItem = () => {
           />
         )}
         <div className="song-description">
-          {selectedSong ? (
-            <p className="title">{selectedSong.title}</p>
+          {selectedSong.length !== 0 ? (
+            <p className="title">{selectedSong?.title}</p>
           ) : (
-            <p className="title">{fetchSong[0].title}</p>
             // <p className="title">Kesariya</p>
+            <p className="title">{fetchSong[0].title}</p>
           )}
-          {selectedSong ? (
-            <p className="title">{selectedSong.artist.name}</p>
+          {selectedSong.length !== 0 ? (
+            <p className="title">{selectedSong?.artist.name}</p>
           ) : (
-            <p className="title">{fetchSong[0].artist.name}</p>
             // <p className="title">Pritam</p>
+            <p className="title">{fetchSong[0].artist.name}</p>
           )}
         </div>
       </div>

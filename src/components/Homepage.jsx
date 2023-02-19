@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./styles.css";
 import { Container, Row } from "react-bootstrap";
 import ArtistTopCard from "./ArtistTopCard";
@@ -21,6 +21,10 @@ const Homepage = () => {
     e.preventDefault();
     dispatch(loadArtist());
   };
+  useEffect(() => {
+    dispatch(loadArtist());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className="d-flex flex-column">

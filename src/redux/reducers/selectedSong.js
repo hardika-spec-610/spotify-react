@@ -7,7 +7,7 @@ import {
 
 const initialState = {
   songData: [],
-  selectedSong: {},
+  selectedSong: null,
   isLoading: true,
   isError: false,
 };
