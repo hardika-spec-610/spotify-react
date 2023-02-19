@@ -39,7 +39,7 @@ i:hover {
 }
 
 .song-bar {
-  position: absolute;
+  /* position: absolute; */
   left: var(--padding);
 
   display: flex;
@@ -110,7 +110,12 @@ i:hover {
   align-items: center;
   gap: 2em;
 }
-
+.btn-transparent {
+  background-color: transparent;
+}
+#dislikeButton path {
+  fill: #1bd760;
+}
 .play:hover,
 .pause:hover {
   transform: scale(1.1);

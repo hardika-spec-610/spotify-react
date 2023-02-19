@@ -4,6 +4,7 @@ import Homepage from "./components/Homepage";
 import Sidebar from "./components/Sidebar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MusicPlayer from "./components/Musicplayer/MusicPlayer";
+import LikedSong from "./components/LikesSong";
 
 function App() {
   return (
@@ -11,9 +12,9 @@ function App() {
       <div className="d-flex flex-column">
         <div className="d-flex">
           <Sidebar />
-
           <Routes>
             <Route path="/" element={<Homepage />}></Route>
+            <Route path="/liked-song" element={<LikedSong />}></Route>
           </Routes>
         </div>
         <MusicPlayer />

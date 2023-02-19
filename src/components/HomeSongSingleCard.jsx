@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { addSongToPlayerSelectedAction } from "../redux/actions";
 import "./styles.css";
 
-const HomeSongSingleCard = (props) => {
+const HomeSongSingleCard = ({ s }) => {
   const dispatch = useDispatch();
 
   return (
@@ -13,7 +13,7 @@ const HomeSongSingleCard = (props) => {
           title="Play"
           className="play-green-btn"
           onClick={() => {
-            dispatch(addSongToPlayerSelectedAction(props.selectedSong));
+            dispatch(addSongToPlayerSelectedAction(s));
           }}
         >
           <svg
@@ -31,37 +31,18 @@ const HomeSongSingleCard = (props) => {
         <a href="#page" className="w-100">
           <div className="card">
             <div className="position-relative">
-              {/* {isLike ? ( */}
-              {/* <BsFillHeartFill
-                size={20}
-                fill="#1fdf64"
-                className="heart-fill"
-                // onClick={toggleLike}
-              /> */}
-              {/* ) : ( */}
-              {/* <BsHeart
-                size={20}
-                fill="#1fdf64"
-                className="heart-line"
-                onClick={toggleLike}
-              /> */}
-              {/* )} */}
-
               <img
-                src={props.cover_medium}
+                src={s.album.cover_medium}
                 className="card-img-top mb-3"
-                alt={props.alttitle}
+                alt={s.title}
                 width="100%"
               />
             </div>
             <div className="card-body p-0">
               <h6 className="card-title text-capitalize text-truncate text-white mb-0">
-                {props.title}
+                {s.title}
               </h6>
-              <p className="card-text text-truncate mt-1">
-                {" "}
-                {props.title_short}
-              </p>
+              <p className="card-text text-truncate mt-1">{s.artist.name}</p>
             </div>
           </div>
         </a>

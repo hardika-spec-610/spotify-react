@@ -57,6 +57,11 @@ a:hover {
   color: var(--active-font-color);
   text-decoration: none;
 }
+h1 {
+  font-size: 4rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
 .button-transparent {
   background-color: transparent;
   border: none;
@@ -83,7 +88,9 @@ a:hover {
 .sidebar-song-list li a {
   text-transform: capitalize;
 }
-
+.active {
+  color: #1fdf64;
+}
 .navbar {
   height: 100vh;
   padding: 1.5rem 1rem 1rem 1.5rem;
@@ -435,6 +442,13 @@ input:focus-visible {
   position: absolute;
   top: 5px;
   left: 5px;
+}
+.new-Button {
+  opacity: 1;
+  position: relative;
+}
+.new-Button:hover {
+  transform: scale(1.1);
 }
 @media screen and (min-width: 768px) {
   .medium-screen-p {

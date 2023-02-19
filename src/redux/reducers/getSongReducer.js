@@ -2,7 +2,7 @@ import { GET_SONGS, GET_SONGS_ERROR, GET_SONGS_LOADING } from "../actions";
 
 const initialState = {
   fetchSong: [],
-  isLoading: false,
+  isLoading: true,
   isError: false,
 };
 
