@@ -30,23 +30,23 @@ const HomePage = () => {
     dispatch(loadArtist());
     dispatch(addSongToPlayerSelectedAction(songsList[0]));
     getRecentSongs("Arijit Singh");
-    scrollHeader();
+    // scrollHeader();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  let header = document.querySelector(".content-header");
-  const scrollHeader = () => {
-    document.addEventListener("scroll", () => {
-      let scrollPosition = window.scrollY;
-      if (scrollPosition >= 1) {
-        header.classList.add("header-bg-color");
-        // header.style.backgroundColor = "#000";
-      }
-      if (scrollPosition < 1) {
-        header.classList.remove("header-bg-color");
-        // header.style.backgroundColor = "transparent";
-      }
-    });
-  };
+  // let header = document.querySelector(".content-header");
+  // const scrollHeader = () => {
+  //   document.addEventListener("scroll", () => {
+  //     let scrollPosition = window.scrollY;
+  //     if (scrollPosition >= 1) {
+  //       // header.classList.add("header-bg-color");
+  //       header.style.backgroundColor = "#000";
+  //     }
+  //     if (scrollPosition < 1) {
+  //       // header.classList.remove("header-bg-color");
+  //       header.style.backgroundColor = "transparent";
+  //     }
+  //   });
+  // };
   return (
     <div className="d-flex flex-column">
       <div className="d-flex">
