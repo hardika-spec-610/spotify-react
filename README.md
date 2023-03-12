@@ -38,7 +38,8 @@ The app should now be running on [http://localhost:3000](http://localhost:3000).
 
 2. You can like and unlike the song on Music player and display on sidebar
 
-![image](/public/img/spotify2.png)
+![image](/public/img/spotify3.png)
 
 3. In the search bar, type the name of the song you want to listen to and press enter.
-   ![image](/public/img/spotify3.png)
+
+![image](/public/img/spotify2.png)
