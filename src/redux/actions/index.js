@@ -20,6 +20,7 @@ export const loadArtist = () => {
       if (response.ok) {
         const songs = await response.json();
         const { data } = songs;
+        console.log("dispatch", songs);
         dispatch({
           type: GET_SONGS,
           payload: data,

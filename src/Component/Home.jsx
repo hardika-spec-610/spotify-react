@@ -1,18 +1,16 @@
-import { useEffect, useState } from "react";
-import "./styles.css";
-import { Container, Row } from "react-bootstrap";
-import ArtistTopCard from "./ArtistTopCard";
-import HomeSongSingleCard from "./HomeSongSingleCard";
+import LoaderSpinner from "./Loader.jsx";
 import BackArrowHeader from "./BackArrowHeader";
-import { loadArtist } from "../redux/actions";
-import { useDispatch, useSelector } from "react-redux";
+import ArtistTopCard from "./ArtistTopCard";
+import { Container, Row } from "react-bootstrap";
+import "./styles.css";
+import HomeSongSingleCard from "./HomeSongSingleCard";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { loadArtist } from "../redux/actions/index.js";
 
-const Homepage = () => {
+const Home = (props) => {
   const [query, setQuery] = useState("");
   const dispatch = useDispatch();
-  const songsList = useSelector((state) => state.getSong.fetchSong);
-  // console.log("fetchSong", songsList);
-
   const handleChange = (e) => {
     setQuery(e.target.value);
     console.log("search", query);
@@ -21,13 +19,9 @@ const Homepage = () => {
     e.preventDefault();
     dispatch(loadArtist());
   };
-  useEffect(() => {
-    dispatch(loadArtist());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
-  return (
-    <div className="d-flex flex-column">
+  return props.songs.length > 0 && props.recentSongs.length > 0 ? (
+    <div className="d-flex flex-column w-100">
       <BackArrowHeader
         handleSubmit={handleSubmit}
         query={query}
@@ -38,7 +32,7 @@ const Homepage = () => {
           <>
             <h4 className="px-0 text-white mb-3 mt-5">Searched Song</h4>
             <Row>
-              {songsList
+              {props.songs
                 .filter((searchedSong) =>
                   searchedSong.album.title.toLocaleLowerCase().includes(query)
                 )
@@ -50,26 +44,29 @@ const Homepage = () => {
           </>
         ) : (
           <>
-            <div className="mt-5">
+            <div className="mt-5 padding-inline">
               <h4 className="px-0 text-white mb-3">Good afternoon</h4>
               <Row className=" py-2">
-                {songsList &&
-                  songsList
+                {props.recentSongs &&
+                  props.recentSongs
                     .slice(0, 8)
                     .map((song) => <ArtistTopCard key={song.id} song={song} />)}
               </Row>
+              <h4 className="px-0 text-white mb-3">More like Arijit Singh</h4>
+              <Row>
+                {props.songs &&
+                  props.songs.map((album) => {
+                    return <HomeSongSingleCard key={album.id} s={album} />;
+                  })}
+              </Row>
             </div>
-            <h4 className="px-0 text-white mb-3">More like Arijit Singh</h4>
-            <Row>
-              {songsList &&
-                songsList.map((album) => {
-                  return <HomeSongSingleCard key={album.id} s={album} />;
-                })}
-            </Row>
           </>
         )}
       </Container>
     </div>
+  ) : (
+    <LoaderSpinner />
   );
 };
-export default Homepage;
+
+export default Home;

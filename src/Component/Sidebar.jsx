@@ -8,13 +8,12 @@ import {
   BsFillBagPlusFill,
 } from "react-icons/bs";
 import { Link, useLocation } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { removeSongFromList } from "../redux/actions";
 
-const Sidebar = () => {
+const Sidebar = (props) => {
   const dispatch = useDispatch();
   const location = useLocation();
-  const likedSongs = useSelector((state) => state.like.songs);
 
   return (
     <aside className="sidebar">
@@ -84,7 +83,7 @@ const Sidebar = () => {
             </li>
           </ul>
           <hr />
-          <ul className="sidebar-song-list">
+          {/* <ul className="sidebar-song-list">
             <li className="mb-1">
               <a href="#Jun19">Jun19</a>
             </li>
@@ -94,40 +93,45 @@ const Sidebar = () => {
             <li className="mb-1">
               <a href="#Your Top Songs 2020">Your Top Songs 2020</a>
             </li>
-          </ul>
+          </ul> */}
           <ul className="sidebar-song-list">
-            {likedSongs &&
-              likedSongs.map((song) => {
-                return (
-                  <li key={song.id}>
-                    <div className="d-flex align-items-center mt-1">
-                      <Link
-                        to="/"
-                        className="text-truncate"
-                        style={{ width: "160px", color: "white" }}
-                      >
-                        {song.title}
-                      </Link>
-                      <button
-                        id="dislikeButton"
-                        className="btn-transparent px-2 ml-auto"
-                        onClick={() => {
-                          dispatch(removeSongFromList(song.id));
-                        }}
-                      >
-                        <svg
-                          role="img"
-                          height="16"
-                          width="16"
-                          viewBox="0 0 16 16"
+            {props.likedSongs.length > 0 ? (
+              <>
+                {props.likedSongs?.map((song) => {
+                  return (
+                    <li key={song.id}>
+                      <div className="d-flex align-items-center mt-1">
+                        <Link
+                          to="/"
+                          className="text-truncate"
+                          style={{ width: "160px", color: "white" }}
                         >
-                          <path d="M15.724 4.22A4.313 4.313 0 0 0 12.192.814a4.269 4.269 0 0 0-3.622 1.13.837.837 0 0 1-1.14 0 4.272 4.272 0 0 0-6.21 5.855l5.916 7.05a1.128 1.128 0 0 0 1.727 0l5.916-7.05a4.228 4.228 0 0 0 .945-3.577z"></path>
-                        </svg>
-                      </button>
-                    </div>
-                  </li>
-                );
-              })}
+                          {song.title}
+                        </Link>
+                        <button
+                          id="dislikeButton"
+                          className="btn-transparent px-2 ml-auto"
+                          onClick={() => {
+                            dispatch(removeSongFromList(song.id));
+                          }}
+                        >
+                          <svg
+                            role="img"
+                            height="16"
+                            width="16"
+                            viewBox="0 0 16 16"
+                          >
+                            <path d="M15.724 4.22A4.313 4.313 0 0 0 12.192.814a4.269 4.269 0 0 0-3.622 1.13.837.837 0 0 1-1.14 0 4.272 4.272 0 0 0-6.21 5.855l5.916 7.05a1.128 1.128 0 0 0 1.727 0l5.916-7.05a4.228 4.228 0 0 0 .945-3.577z"></path>
+                          </svg>
+                        </button>
+                      </div>
+                    </li>
+                  );
+                })}
+              </>
+            ) : (
+              "Not liked song"
+            )}
           </ul>
         </div>
       </nav>

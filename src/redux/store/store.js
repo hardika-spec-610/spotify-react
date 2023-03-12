@@ -11,7 +11,7 @@ const persistConfig = {
   key: "root", // this brings the whole redux store into persistency
   transforms: [
     encryptTransform({
-      secretKey: process.env.REACT_APP_ENV_SECRET_SUPER_SP0TYFY_KEY_SECOND2,
+      secretKey: process.env.REACT_APP_ENV_SECRET_SUPER_SP0TYFY_KEY_THIRD,
     }),
   ],
 };
